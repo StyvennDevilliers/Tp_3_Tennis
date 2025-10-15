@@ -81,22 +81,22 @@ public class Ihm3 {
                 break;
         }
 
-        System.out.println("Saisir nombre de victoire");
+        System.out.println("Saisir nombre de victoire(s)");
         nbrvictoire = In.readInteger();
         if (nbrvictoire > nbrmaxvictoire){
             nbrvictoire = nbrmaxvictoire;
         }
 
-        System.out.println("Saisir nombre de défaite");
+        System.out.println("Saisir nombre de défaite(s)");
         nbrdefaite = In.readInteger();
 
         for (int i = 0; i < nbrdefaite; i++) {
             System.out.println("""
                  _____________________________________________
-                |   Veuillez choisir votre type de defaite.  |
-                | 1) Défaite à échelon égal                  |
-                | 2) Défaite à 1 échelon inférieur          |
-                | 3) Défaite à 2 échelons inférieur         |
+                |   Veuillez choisir votre type de défaite.   |
+                | 1) Défaite à échelon égal                   |
+                | 2) Défaite à 1 échelon inférieur            |
+                | 3) Défaite à 2 échelons inférieur           |
                 |_____________________________________________|
                 """);
             defaite = In.readInteger();
@@ -112,8 +112,8 @@ public class Ihm3 {
                     break;
             }
         }
-        nbrvictoiresup = nbrvictoire - e - 2*j - 5*g;
 
+        nbrvictoiresup = nbrvictoire - e - 2*j - 5*g;
         if (nbrvictoiresup <= 4) {
             nbrvictoiresupreel = 1;
         }else if (nbrvictoiresup >= 5 && nbrvictoiresup <= 9) {
@@ -127,17 +127,17 @@ public class Ihm3 {
         }else  {
             nbrvictoiresupreel = 6;
         }
-        System.out.println("Nombre de victoire supplémentaires prises en compte: " + nbrvictoiresupreel) ;
-        nvclassement = classement;
+        System.out.println("Nombre de victoires supplémentaires prises en compte: " + nbrvictoiresupreel) ;
 
+        nvclassement = classement;
         int i=0;
         while(!finboucle){
             for (i=i; i < (nbrmaxvictoire + nbrvictoiresupreel); i++) {
                 System.out.println("""
                      _____________________________________________
                     |   Veuillez choisir votre type de victoire.  |
-                    | 1) Victoire à 2 échelons au dessus et plus  |
-                    | 2) Victoire à 1 échelon au dessus           |
+                    | 1) Victoire à 2 échelons au-dessus et plus  |
+                    | 2) Victoire à 1 échelon au-dessus           |
                     | 3) Victoire à échelon égal                  |
                     | 4) Victoire à 1 échelon en dessous          |
                     | 5) Victoire à 2 échelons en dessous         |
@@ -198,7 +198,6 @@ public class Ihm3 {
                     nbrpoints = 2;
                 }else {
                 }
-
                 switch (nvclassement) {
                     case NC:
                         classementfin = new String("Non classé");
@@ -232,34 +231,42 @@ public class Ihm3 {
                         break;
                 }
                 System.out.println("Classement: " + classementfin);
-
             }
+
             if ((nbrpoints == 2 && nvclassement == _40 || nbrpoints == 5 && nvclassement == _30_5 || nbrpoints == 10 && nvclassement == _30_4 || nbrpoints == 20 && nvclassement == _30_3 || nbrpoints == 30 && nvclassement == _30_2 || nbrpoints == 50 && nvclassement == _30_1 || nbrpoints == 80 && nvclassement == _30 || nbrpoints == 120 && nvclassement == _15_5 || nbrpoints == 160 && nvclassement == _15_4) && rattrapage == true){
                 i = (nbrmaxvictoire + nbrvictoiresupreel)- 1;
                 rattrapage =false;
             }else{
                 finboucle = true;
             }
+
         }
 
         System.out.println("Total des points: " + nbrpoints);
-
         if ( nbrpoints < 395 && nvclassement == _15_4) {
             nvclassement =  _15_5;
+            nbrpoints = 120;
         }else if ( nbrpoints < 325 && nvclassement == _15_5 ) {
             nvclassement =  _30;
+            nbrpoints = 80;
         }else if (nbrpoints < 290 && nvclassement == _30) {
             nvclassement =  _30_1;
+            nbrpoints = 50;
         }else if (nbrpoints < 245 && nvclassement == _30_1) {
             nvclassement =  _30_2;
+            nbrpoints = 30;
         }else if (nbrpoints < 205 && nvclassement == _30_2) {
             nvclassement =  _30_3;
+            nbrpoints = 20;
         }else if (nbrpoints < 145 && nvclassement == _30_3) {
             nvclassement =  _30_4;
+            nbrpoints = 10;
         }else if (nbrpoints < 90 && nvclassement == _30_4) {
             nvclassement =  _30_5;
+            nbrpoints = 5;
         }else if (nbrpoints < 50 && nvclassement == _30_5) {
             nvclassement =  _40;
+            nbrpoints = 2;
         }else {
             nvclassement = nvclassement;
         }
@@ -298,7 +305,6 @@ public class Ihm3 {
         }
         System.out.println("\nClassement Final: " + classementfin);
         System.out.println("Avec " + nbrpoints + " points.\n");
-
 
     }
 }
