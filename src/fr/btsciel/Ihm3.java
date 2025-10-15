@@ -296,7 +296,7 @@ public class Ihm3 {
                 classementfin = new String("15/4");
                 break;
         }
-        System.out.println("Classement Final: " + classementfin + "\n");
+        System.out.println("\nClassement Final: " + classementfin);
         System.out.println("Avec " + nbrpoints + " points.\n");
 
 
