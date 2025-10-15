@@ -17,6 +17,7 @@ public class Ihm3 {
         final int _15_5 = 9;
         final int _15_4 = 10;
 
+        boolean rattrapage = true;
         boolean finboucle = false;
         int e = 0, j = 0, g = 0;
         String classementfin = new String();
@@ -128,6 +129,7 @@ public class Ihm3 {
         }
         System.out.println("Nombre de victoire supplémentaires prises en compte: " + nbrvictoiresupreel) ;
         nvclassement = classement;
+
         int i=0;
         while(!finboucle){
             for (i=i; i < (nbrmaxvictoire + nbrvictoiresupreel); i++) {
@@ -230,12 +232,11 @@ public class Ihm3 {
                         break;
                 }
                 System.out.println("Classement: " + classementfin);
-                System.out.println("Nombre de points après la victoire: " + nbrpoints);
-
 
             }
-            if (nbrpoints == 2 && nvclassement == _40 || nbrpoints == 5 && nvclassement == _30_5 || nbrpoints == 10 && nvclassement == _30_4 || nbrpoints == 20 && nvclassement == _30_3 || nbrpoints == 30 && nvclassement == _30_2 || nbrpoints == 50 && nvclassement == _30_1 || nbrpoints == 80 && nvclassement == _30 || nbrpoints == 120 && nvclassement == _15_5 || nbrpoints == 160 && nvclassement == _15_4){
+            if ((nbrpoints == 2 && nvclassement == _40 || nbrpoints == 5 && nvclassement == _30_5 || nbrpoints == 10 && nvclassement == _30_4 || nbrpoints == 20 && nvclassement == _30_3 || nbrpoints == 30 && nvclassement == _30_2 || nbrpoints == 50 && nvclassement == _30_1 || nbrpoints == 80 && nvclassement == _30 || nbrpoints == 120 && nvclassement == _15_5 || nbrpoints == 160 && nvclassement == _15_4) && rattrapage == true){
                 i = (nbrmaxvictoire + nbrvictoiresupreel)- 1;
+                rattrapage =false;
             }else{
                 finboucle = true;
             }
