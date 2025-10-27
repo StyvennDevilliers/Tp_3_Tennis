@@ -16,6 +16,7 @@ public class Ihm3 {
         final int _30 = 8;
         final int _15_5 = 9;
         final int _15_4 = 10;
+        int i = 0;
         String again = new String();
         boolean check;
 
@@ -31,22 +32,18 @@ public class Ihm3 {
             int nbrdefaite, defaite;
             int nbrpoints = 0;
 
-            do {
-                System.out.println("""
-                         __________________________________
-                        |Veuillez choisir votre classement.|
-                        | 1) Non Classé         6) 35/2    |
-                        | 2) 40                 7) 35/1    |
-                        | 3) 35/5               8) 35      |
-                        | 4) 35/4               9) 15/5    |
-                        | 5) 35/3               10) 15/4   |
-                        |__________________________________|
-                        """);
-                classement = In.readInteger();
-                if(classement != NC || classement != _40 || classement != _30_5 || classement != _30_4 || classement != _30_3 || classement != _30_2 || classement != _30_1 || classement != _30 || classement != _15_5 || classement != _15_4){
-                    System.out.println("Erreur. Veuillez ressaisir.");
-                }
-            }while (classement != NC || classement != _40 || classement != _30_5 || classement != _30_4 || classement != _30_3 || classement != _30_2 || classement != _30_1 || classement != _30 || classement != _15_5 || classement != _15_4);
+
+            System.out.println("""
+                     __________________________________
+                    |Veuillez choisir votre classement.|
+                    | 1) Non Classé         6) 30/2    |
+                    | 2) 40                 7) 30/1    |
+                    | 3) 30/5               8) 30      |
+                    | 4) 30/4               9) 15/5    |
+                    | 5) 30/3               10) 15/4   |
+                    |__________________________________|
+                    """);
+            classement = In.readInteger();
 
             switch (classement) {
                 case NC:
@@ -97,28 +94,23 @@ public class Ihm3 {
 
             System.out.println("Saisir nombre de victoire(s)");
             nbrvictoire = In.readInteger();
-            if (nbrvictoire > nbrmaxvictoire) {
-                nbrvictoire = nbrmaxvictoire;
-            }
+
 
             System.out.println("Saisir nombre de défaite(s)");
             nbrdefaite = In.readInteger();
 
-            for (int i = 0; i < nbrdefaite; i++) {
-                do {
-                    System.out.println("""
-                             _____________________________________________
-                            |   Veuillez choisir votre type de défaite.   |
-                            | 1) Défaite à échelon égal                   |
-                            | 2) Défaite à 1 échelon inférieur            |
-                            | 3) Défaite à 2 échelons inférieur           |
-                            |_____________________________________________|
-                            """);
-                    defaite = In.readInteger();
-                    if(defaite!=Degal ||defaite!=D1moins || defaite!=D2moins){
-                        System.out.println("Erreur. Veuillez ressaisir.");
-                    }
-                }while (defaite!=Degal ||defaite!=D1moins || defaite!=D2moins);
+            for ( i = 0; i < nbrdefaite; i++) {
+
+                System.out.println("""
+                         _____________________________________________
+                        |   Veuillez choisir votre type de défaite.   |
+                        | 1) Défaite à échelon égal                   |
+                        | 2) Défaite à 1 échelon inférieur            |
+                        | 3) Défaite à 2 échelons inférieur           |
+                        |_____________________________________________|
+                        """);
+                defaite = In.readInteger();
+
 
                 switch (defaite) {
                     case Degal:
@@ -147,30 +139,32 @@ public class Ihm3 {
             } else {
                 nbrvictoiresupreel = 6;
             }
+
+
             System.out.println("Nombre de victoires supplémentaires prises en compte: " + nbrvictoiresupreel);
 
+            if(nbrvictoire >= (nbrvictoiresupreel+nbrmaxvictoire)){
+                nbrvictoire = (nbrvictoiresupreel+nbrmaxvictoire);
+            }
+
             nvclassement = classement;
-            int i = 0;
+
             while (!finboucle) {
-                for (i = i; i < (nbrmaxvictoire + nbrvictoiresupreel); i++) {
-                    do {
-                        System.out.println("""
-                                 _____________________________________________
-                                |   Veuillez choisir votre type de victoire.  |
-                                | 1) Victoire à 2 échelons au-dessus et plus  |
-                                | 2) Victoire à 1 échelon au-dessus           |
-                                | 3) Victoire à échelon égal                  |
-                                | 4) Victoire à 1 échelon en dessous          |
-                                | 5) Victoire à 2 échelons en dessous         |
-                                | 6) Victoire à 3 échelons en dessous         |
-                                | 7) Victoire à 4 échelons en dessous et plus |
-                                |_____________________________________________|
-                                """);
-                        victoire = In.readInteger();
-                        if(victoire!=V2plus ||victoire!=V1plus || victoire!=Vegal || victoire!=V1moins || victoire!=V2moins || victoire!=V3moins || victoire!=V4moins){
-                            System.out.println("Erreur. Veuillez ressaisir.");
-                        }
-                    }while(victoire!=V2plus ||victoire!=V1plus || victoire!=Vegal || victoire!=V1moins || victoire!=V2moins || victoire!=V3moins || victoire!=V4moins);
+                for ( i = i; i < nbrvictoire; i++) {
+
+                    System.out.println("""
+                             _____________________________________________
+                            |   Veuillez choisir votre type de victoire.  |
+                            | 1) Victoire à 2 échelons au-dessus et plus  |
+                            | 2) Victoire à 1 échelon au-dessus           |
+                            | 3) Victoire à échelon égal                  |
+                            | 4) Victoire à 1 échelon en dessous          |
+                            | 5) Victoire à 2 échelons en dessous         |
+                            | 6) Victoire à 3 échelons en dessous         |
+                            | 7) Victoire à 4 échelons en dessous et plus |
+                            |_____________________________________________|
+                            """);
+                    victoire = In.readInteger();
 
                     switch (victoire){
                         case V2plus:
@@ -230,6 +224,7 @@ public class Ihm3 {
 
                 if ((nbrpoints == 2 && nvclassement == _40 || nbrpoints == 5 && nvclassement == _30_5 || nbrpoints == 10 && nvclassement == _30_4 || nbrpoints == 20 && nvclassement == _30_3 || nbrpoints == 30 && nvclassement == _30_2 || nbrpoints == 50 && nvclassement == _30_1 || nbrpoints == 80 && nvclassement == _30 || nbrpoints == 120 && nvclassement == _15_5 || nbrpoints == 160 && nvclassement == _15_4) && rattrapage == true) {
                     i = (nbrmaxvictoire + nbrvictoiresupreel) - 1;
+                    System.out.println("Vous avez le droit au rattrapage.");
                     rattrapage = false;
                 } else {
                     finboucle = true;
